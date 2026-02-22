@@ -14,50 +14,100 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<style>
-			/* Projects carousel — fills the image slot in the section three spotlight */
-			#three .image.main {
-				overflow: hidden;
-				padding: 0;
+			/* Desktop (>980px): Swiper fills the full section as a background layer.
+			   The JS still reads span.image.main > img for its background-image call,
+			   but the Swiper sits on top and covers it. */
+			@media screen and (min-width: 981px) {
+				.projects-swiper {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: 0;
+				}
+				.projects-swiper .swiper-slide {
+					overflow: hidden;
+				}
+				.projects-swiper .swiper-slide img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					display: block;
+				}
+				/* Content panel sits above the carousel */
+				#three .content {
+					z-index: 2;
+				}
+				/* Overlay texture stays between carousel and content */
+				#three:before {
+					z-index: 1;
+					pointer-events: none;
+				}
+				/* Pagination dots above overlay, positioned bottom-right (clear of content panel) */
+				.projects-swiper .swiper-pagination {
+					z-index: 3;
+					left: auto;
+					right: 1.5em;
+					width: auto;
+					bottom: 1.5em;
+				}
+				/* Hide nav arrows on desktop — content panel covers the left side */
+				.projects-swiper .swiper-button-prev,
+				.projects-swiper .swiper-button-next {
+					display: none;
+				}
+				/* Caption bar above overlay */
+				.swiper-caption {
+					z-index: 3;
+				}
 			}
-			.projects-swiper {
-				width: 100%;
-				height: 100%;
+
+			/* Mobile (<=980px): Swiper shows as a normal block image, replacing the static img */
+			@media screen and (max-width: 980px) {
+				#three .image.main {
+					display: none !important;
+				}
+				.projects-swiper {
+					display: block;
+					width: 100%;
+					max-height: 40vh;
+					overflow: hidden;
+				}
+				.projects-swiper .swiper-slide img {
+					width: 100%;
+					height: 40vh;
+					object-fit: cover;
+					display: block;
+				}
+				.projects-swiper .swiper-button-prev,
+				.projects-swiper .swiper-button-next {
+					color: rgba(255, 255, 255, 0.8);
+					transform: scale(0.65);
+				}
+				.projects-swiper .swiper-pagination-bullet {
+					background: rgba(255, 255, 255, 0.5);
+				}
+				.projects-swiper .swiper-pagination-bullet-active {
+					background: #e44c65;
+				}
 			}
-			.projects-swiper .swiper-slide {
-				position: relative;
-				overflow: hidden;
-			}
-			.projects-swiper .swiper-slide img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				display: block;
-			}
+
+			/* Shared caption style */
 			.swiper-caption {
 				position: absolute;
 				bottom: 0;
 				left: 0;
 				right: 0;
-				background: rgba(28, 29, 38, 0.82);
-				color: rgba(255, 255, 255, 0.88);
-				padding: 0.6em 1.1em;
-				font-size: 0.8em;
+				background: rgba(28, 29, 38, 0.8);
+				color: rgba(255, 255, 255, 0.85);
+				padding: 0.55em 1em;
+				font-size: 0.78em;
 				font-family: "Roboto", Helvetica, sans-serif;
 				font-weight: 300;
 				letter-spacing: 0.04em;
 				text-align: center;
-				z-index: 10;
-			}
-			.projects-swiper .swiper-button-prev,
-			.projects-swiper .swiper-button-next {
-				color: rgba(255, 255, 255, 0.7);
-				transform: scale(0.65);
-			}
-			.projects-swiper .swiper-pagination-bullet {
-				background: rgba(255, 255, 255, 0.5);
-			}
-			.projects-swiper .swiper-pagination-bullet-active {
-				background: #e44c65;
+				pointer-events: none;
 			}
 		</style>
 	</head>
@@ -143,56 +193,57 @@
 				</section>
 
 		<!-- Three -->
-			<section id="three" class="spotlight style3 left">
-				<span class="image fit main bottom">
-					<div class="swiper projects-swiper">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<img src="images/james-kid-dell.png" alt="" />
-								<div class="swiper-caption">Where it started &mdash; first computer, ~age 10</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/pc-build.png" alt="" />
-								<div class="swiper-caption">First PC build</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/desk-setup-current.png" alt="" />
-								<div class="swiper-caption">Current home setup</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/jamesnet-diagram-full.png" alt="" />
-								<div class="swiper-caption">JamesNet 2.0 &mdash; home network architecture (in progress)</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/jamesnet-diagram-close.png" alt="" />
-								<div class="swiper-caption">JamesNet 2.0 &mdash; network diagram detail</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/nyc-mesh-install-selfie.png" alt="" />
-								<div class="swiper-caption">NYC Mesh rooftop install day</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/nyc-mesh-antenna-skyline.png" alt="" />
-								<div class="swiper-caption">NYC Mesh node &mdash; Sunset Park, Brooklyn</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/nyc-mesh-rooftop-wide.png" alt="" />
-								<div class="swiper-caption">NYC Mesh &mdash; rooftop installation with solar</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/nyc-mesh-antennas-verrazano.png" alt="" />
-								<div class="swiper-caption">NYC Mesh &mdash; looking toward the Verrazano</div>
-							</div>
-							<div class="swiper-slide">
-								<img src="images/steamworks-cake.png" alt="" />
-								<div class="swiper-caption">There&rsquo;s no place like 127.0.0.1</div>
-							</div>
-						</div>
-						<div class="swiper-pagination"></div>
-						<div class="swiper-button-prev"></div>
-						<div class="swiper-button-next"></div>
+		<section id="three" class="spotlight style3 left">
+			<!-- Static img kept here so main.js can read it for the desktop background-image call -->
+			<span class="image fit main bottom"><img src="images/nyc-mesh-rooftop-wide.png" alt="" /></span>
+			<!-- Carousel: absolutely positioned over the section on desktop; block on mobile -->
+			<div class="swiper projects-swiper">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="images/james-kid-dell.png" alt="" />
+						<div class="swiper-caption">Where it started &mdash; first computer, ~age 10</div>
 					</div>
-				</span>
+					<div class="swiper-slide">
+						<img src="images/pc-build.png" alt="" />
+						<div class="swiper-caption">First PC build</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/desk-setup-current.png" alt="" />
+						<div class="swiper-caption">Current home setup</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/jamesnet-diagram-full.png" alt="" />
+						<div class="swiper-caption">JamesNet 2.0 &mdash; home network architecture</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/jamesnet-diagram-close.png" alt="" />
+						<div class="swiper-caption">JamesNet 2.0 &mdash; network diagram detail</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/nyc-mesh-install-selfie.png" alt="" />
+						<div class="swiper-caption">NYC Mesh rooftop install day</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/nyc-mesh-antenna-skyline.png" alt="" />
+						<div class="swiper-caption">NYC Mesh node &mdash; Sunset Park, Brooklyn</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/nyc-mesh-rooftop-wide.png" alt="" />
+						<div class="swiper-caption">NYC Mesh &mdash; rooftop installation with solar</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/nyc-mesh-antennas-verrazano.png" alt="" />
+						<div class="swiper-caption">NYC Mesh &mdash; looking toward the Verrazano</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/steamworks-cake.png" alt="" />
+						<div class="swiper-caption">There&rsquo;s no place like 127.0.0.1</div>
+					</div>
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
 					<div class="content">
 						<header>
 							<h2>Projects &amp; Community</h2>
