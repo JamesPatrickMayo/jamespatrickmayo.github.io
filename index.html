@@ -103,10 +103,15 @@
 			/* Banner background — override the near-opaque default overlay so the image shows through */
 		#banner {
 			background-image: url("images/nyc-mesh-antenna-skyline.png");
-			background-position: center center;
+			background-position: center 75%;
 		}
 		#banner:after {
-			opacity: 0.35 !important;
+			opacity: 0.22 !important;
+		}
+		/* Text shadow for readability over the background image */
+		#banner .content header h2,
+		#banner .content header p {
+			text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95), 0 2px 16px rgba(0, 0, 0, 0.8);
 		}
 
 		/* Shared caption style */
