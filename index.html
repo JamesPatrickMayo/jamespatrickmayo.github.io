@@ -100,7 +100,16 @@
 				}
 			}
 
-			/* Shared caption style */
+			/* Banner background — override the near-opaque default overlay so the image shows through */
+		#banner {
+			background-image: url("images/nyc-mesh-antenna-skyline.png");
+			background-position: center center;
+		}
+		#banner:after {
+			background-image: linear-gradient(top, rgba(23, 24, 32, 0.65), rgba(23, 24, 32, 0.65)), url("images/overlay.png") !important;
+		}
+
+		/* Shared caption style */
 			.swiper-caption {
 				position: absolute;
 				bottom: 0;
