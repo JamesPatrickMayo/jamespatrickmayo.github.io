@@ -31,11 +31,16 @@
 					overflow: hidden;
 					background: #1c1d26;
 				}
+				/* Default: contain (landscape photos show in full) */
 				.projects-swiper .swiper-slide img {
 					width: 100%;
 					height: 100%;
 					object-fit: contain;
 					display: block;
+				}
+				/* Portrait photos: cover fills the frame better */
+				.projects-swiper .swiper-slide[data-fit="cover"] img {
+					object-fit: cover;
 				}
 				/* Content panel sits above the carousel */
 				#three .content {
@@ -202,18 +207,30 @@
 			<div class="swiper projects-swiper">
 				<div class="swiper-wrapper">
 					<div class="swiper-slide">
-						<img src="images/james-kid-dell.png" alt="" />
-						<div class="swiper-caption">Where it started</div>
+						<img src="images/nyc-mesh-rooftop-wide.png" alt="" />
+						<div class="swiper-caption">NYC Mesh &mdash; rooftop installation with solar</div>
 					</div>
 					<div class="swiper-slide">
-						<img src="images/pc-build.png" alt="" />
-						<div class="swiper-caption">First PC build</div>
+						<img src="images/nyc-mesh-antenna-skyline.png" alt="" />
+						<div class="swiper-caption">NYC Mesh node &mdash; Sunset Park, Brooklyn</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="images/nyc-mesh-antennas-verrazano.png" alt="" />
+						<div class="swiper-caption">NYC Mesh &mdash; looking toward the Verrazano</div>
+					</div>
+					<div class="swiper-slide" data-fit="cover">
+						<img src="images/nyc-mesh-install-selfie.png" alt="" />
+						<div class="swiper-caption">NYC Mesh rooftop install day</div>
 					</div>
 					<div class="swiper-slide">
 						<img src="images/desk-setup-current.png" alt="" />
 						<div class="swiper-caption">Current home setup</div>
 					</div>
 					<div class="swiper-slide">
+						<img src="images/pc-build.png" alt="" />
+						<div class="swiper-caption">First PC build</div>
+					</div>
+					<div class="swiper-slide" data-fit="cover">
 						<img src="images/jamesnet-diagram-full.png" alt="" />
 						<div class="swiper-caption">JamesNet 2.0 &mdash; home network architecture</div>
 					</div>
@@ -222,24 +239,12 @@
 						<div class="swiper-caption">JamesNet 2.0 &mdash; network diagram detail</div>
 					</div>
 					<div class="swiper-slide">
-						<img src="images/nyc-mesh-install-selfie.png" alt="" />
-						<div class="swiper-caption">NYC Mesh rooftop install day</div>
-					</div>
-					<div class="swiper-slide">
-						<img src="images/nyc-mesh-antenna-skyline.png" alt="" />
-						<div class="swiper-caption">NYC Mesh node &mdash; Sunset Park, Brooklyn</div>
-					</div>
-					<div class="swiper-slide">
-						<img src="images/nyc-mesh-rooftop-wide.png" alt="" />
-						<div class="swiper-caption">NYC Mesh &mdash; rooftop installation with solar</div>
-					</div>
-					<div class="swiper-slide">
-						<img src="images/nyc-mesh-antennas-verrazano.png" alt="" />
-						<div class="swiper-caption">NYC Mesh &mdash; looking toward the Verrazano</div>
-					</div>
-					<div class="swiper-slide">
 						<img src="images/steamworks-cake.png" alt="" />
 						<div class="swiper-caption">There&rsquo;s no place like 127.0.0.1</div>
+					</div>
+					<div class="swiper-slide" data-fit="cover">
+						<img src="images/james-kid-dell.png" alt="" />
+						<div class="swiper-caption">Where it started</div>
 					</div>
 				</div>
 				<div class="swiper-pagination"></div>
