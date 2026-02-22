@@ -1,5 +1,6 @@
 @import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,100italic,300italic");
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@400;700&display=swap");
 
 /*
 	Landed by HTML5 UP
@@ -3386,14 +3387,17 @@ input, select, textarea {
 		z-index: 100;
 	}
 
-		#header h1 {
-			height: inherit;
-			left: 1.25em;
-			line-height: inherit;
-			margin: 0;
-			position: absolute;
-			top: 0;
-		}
+	#header h1 {
+		height: inherit;
+		left: 1.25em;
+		line-height: inherit;
+		margin: 0;
+		position: absolute;
+		top: 0;
+		font-family: 'Doto', monospace;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+	}
 
 		#header nav {
 			position: absolute;
