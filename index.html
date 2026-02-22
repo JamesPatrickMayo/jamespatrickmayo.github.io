@@ -11,7 +11,55 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="James Mayo — Solutions Engineer and Data Platform Specialist based in New York City. 7+ years in data engineering, API integrations, and client-facing technical delivery." />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Projects carousel — fills the image slot in the section three spotlight */
+			#three .image.main {
+				overflow: hidden;
+				padding: 0;
+			}
+			.projects-swiper {
+				width: 100%;
+				height: 100%;
+			}
+			.projects-swiper .swiper-slide {
+				position: relative;
+				overflow: hidden;
+			}
+			.projects-swiper .swiper-slide img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+			.swiper-caption {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(28, 29, 38, 0.82);
+				color: rgba(255, 255, 255, 0.88);
+				padding: 0.6em 1.1em;
+				font-size: 0.8em;
+				font-family: "Roboto", Helvetica, sans-serif;
+				font-weight: 300;
+				letter-spacing: 0.04em;
+				text-align: center;
+				z-index: 10;
+			}
+			.projects-swiper .swiper-button-prev,
+			.projects-swiper .swiper-button-next {
+				color: rgba(255, 255, 255, 0.7);
+				transform: scale(0.65);
+			}
+			.projects-swiper .swiper-pagination-bullet {
+				background: rgba(255, 255, 255, 0.5);
+			}
+			.projects-swiper .swiper-pagination-bullet-active {
+				background: #e44c65;
+			}
+		</style>
 	</head>
 	<body class="is-preload landing">
 		<div id="page-wrapper">
@@ -96,7 +144,55 @@
 
 		<!-- Three -->
 			<section id="three" class="spotlight style3 left">
-				<span class="image fit main bottom"><img src="images/steamworks-cake.png" alt="A cake reading There's no place like 127.0.0.1" /></span>
+				<span class="image fit main bottom">
+					<div class="swiper projects-swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="images/james-kid-dell.png" alt="" />
+								<div class="swiper-caption">Where it started &mdash; first computer, ~age 10</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/pc-build.png" alt="" />
+								<div class="swiper-caption">First PC build</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/desk-setup-current.png" alt="" />
+								<div class="swiper-caption">Current home setup</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/jamesnet-diagram-full.png" alt="" />
+								<div class="swiper-caption">JamesNet 2.0 &mdash; home network architecture (in progress)</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/jamesnet-diagram-close.png" alt="" />
+								<div class="swiper-caption">JamesNet 2.0 &mdash; network diagram detail</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/nyc-mesh-install-selfie.png" alt="" />
+								<div class="swiper-caption">NYC Mesh rooftop install day</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/nyc-mesh-antenna-skyline.png" alt="" />
+								<div class="swiper-caption">NYC Mesh node &mdash; Sunset Park, Brooklyn</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/nyc-mesh-rooftop-wide.png" alt="" />
+								<div class="swiper-caption">NYC Mesh &mdash; rooftop installation with solar</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/nyc-mesh-antennas-verrazano.png" alt="" />
+								<div class="swiper-caption">NYC Mesh &mdash; looking toward the Verrazano</div>
+							</div>
+							<div class="swiper-slide">
+								<img src="images/steamworks-cake.png" alt="" />
+								<div class="swiper-caption">There&rsquo;s no place like 127.0.0.1</div>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</span>
 					<div class="content">
 						<header>
 							<h2>Projects &amp; Community</h2>
@@ -156,15 +252,37 @@
 
 		</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script>
+			new Swiper('.projects-swiper', {
+				loop: true,
+				autoplay: {
+					delay: 4500,
+					disableOnInteraction: false,
+					pauseOnMouseEnter: true
+				},
+				effect: 'fade',
+				fadeEffect: { crossFade: true },
+				speed: 800,
+				pagination: {
+					el: '.swiper-pagination',
+					clickable: true
+				},
+				navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev'
+				}
+			});
+		</script>
 
-	</body>
+</body>
 </html>
