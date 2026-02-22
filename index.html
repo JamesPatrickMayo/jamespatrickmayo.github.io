@@ -103,15 +103,21 @@
 			/* Banner background — override the near-opaque default overlay so the image shows through */
 		#banner {
 			background-image: url("images/nyc-mesh-antenna-skyline.png");
-			background-position: center 75%;
+			background-position: center bottom;
 		}
 		#banner:after {
 			opacity: 0.22 !important;
 		}
-		/* Text shadow for readability over the background image */
+		/* Backdrop pill behind hero text for readability */
+		#banner .content header {
+			background: rgba(23, 24, 32, 0.6);
+			padding: 1.2em 1.8em;
+			border-radius: 0.25em;
+			display: inline-block;
+		}
 		#banner .content header h2,
 		#banner .content header p {
-			text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95), 0 2px 16px rgba(0, 0, 0, 0.8);
+			text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 		}
 
 		/* Shared caption style */
